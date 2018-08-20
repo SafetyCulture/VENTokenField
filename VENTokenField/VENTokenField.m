@@ -88,6 +88,7 @@ static const CGFloat VENTokenFieldDefaultMaxHeight          = 150.0;
     _autocorrectionType = UITextAutocorrectionTypeNo;
     _autocapitalizationType = UITextAutocapitalizationTypeSentences;
     self.maxHeight = VENTokenFieldDefaultMaxHeight;
+    _inputTextFieldReturnKeyType = UIReturnKeyDefault;
     self.verticalInset = VENTokenFieldDefaultVerticalInset;
     self.horizontalInset = VENTokenFieldDefaultHorizontalInset;
     self.tokenPadding = VENTokenFieldDefaultTokenPadding;
@@ -416,6 +417,12 @@ static const CGFloat VENTokenFieldDefaultMaxHeight          = 150.0;
         [_inputTextField addTarget:self action:@selector(inputTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     }
     return _inputTextField;
+}
+
+- (void)setInputTextFieldReturnKeyType:(UIReturnKeyType)inputTextFieldReturnKeyType
+{
+    _inputTextFieldReturnKeyType = inputTextFieldReturnKeyType;
+    [self.inputTextField setReturnKeyType:self.inputTextFieldReturnKeyType];
 }
 
 - (void)setAutocorrectionType:(UITextAutocorrectionType)autocorrectionType
